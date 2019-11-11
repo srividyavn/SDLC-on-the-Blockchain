@@ -1,0 +1,75 @@
+/**
+ * Sample access control list.
+ */
+rule EverybodyCanReadEverything {
+    description: "Allow all participants read access to all resources"
+    participant: "org.acme.howto.Entity"
+    operation: READ
+    resource: "org.acme.howto.*"
+    action: ALLOW
+}
+
+rule OwnerHasFullAccessToTheirAssets {
+    description: "Allow all participants full access to their assets"
+    participant(p): "org.acme.howto.Entity"
+    operation: ALL
+    resource(r): "org.acme.howto.Order"
+    condition: (r.owner.getIdentifier() === p.getIdentifier())
+    action: ALLOW
+}
+
+rule SystemACL {
+  description:  "System ACL to permit all access"
+  participant: "org.hyperledger.composer.system.Participant"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}
+
+rule NetworkAdminUser {
+    description: "Grant business network administrators full access to user resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "**"
+    action: ALLOW
+}
+
+rule NetworkAdminSystem {
+    description: "Grant business network administrators full access to system resources"
+    participant: "org.hyperledger.composer.system.NetworkAdmin"
+    operation: ALL
+    resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule EntityCanChangeStateToProduction {
+    description: "Allow the entity to change the state of the order to production"
+    participant: "org.acme.howto.Entity"
+    operation: CREATE
+    resource: "org.acme.howto.ChangeStateToProduction"
+    action: ALLOW
+}
+
+rule EntityCanChangeStateToDevelopment {
+    description: "Allow the entity to change the state of the order to development"
+    participant: "org.acme.howto.Entity"
+    operation: CREATE
+    resource: "org.acme.howto.ChangeStateToDevelopment"
+    action: ALLOW
+}
+
+rule EntityCanChangeStateToTesting {
+    description: "Allow the entity to change the state of the pizza to testing"
+    participant: "org.acme.howto.Entity"
+    operation: CREATE
+    resource: "org.acme.howto.ChangeStateToTesting"
+    action: ALLOW
+}
+
+rule EntityCanChangeStateToDeployment {
+    description: "Allow the entity to change the state of the pizza to deployment"
+    participant: "org.acme.howto.Entity"
+    operation: CREATE
+    resource: "org.acme.howto.ChangeStateToDeployment"
+    action: ALLOW
+}
