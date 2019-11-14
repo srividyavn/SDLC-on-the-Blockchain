@@ -300,7 +300,7 @@ Once you start up the application, you should be able to see this page:
 From here, the Customer can keep track of their orders through the entire process.
 
 # Summary
-We showed you how to create a simple business network using Hyperledger Composer Playground, export it and create a business network archive file, and deploy it to the Hyperledger Fabric. We also showed how you can spin up a REST server for your applications to consume, and demonstrated that fact by connecting a Python-based application to the Blockchain to realize the use-case of a frozen pizza supply chain.
+We showed you how to create a simple business network using Hyperledger Composer Playground, export it and create a business network archive file, and deploy it to the Hyperledger Fabric. We also showed how you can spin up a REST server for your applications to consume, and demonstrated that fact by connecting a Python-based application to the Blockchain to realize the use-case of a SDLC on the blochchain .
 
 # References
 
